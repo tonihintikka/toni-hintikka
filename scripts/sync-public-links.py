@@ -123,7 +123,6 @@ description: Julkinen lukemisto – avoimet artikkelit ja lähteet, luokiteltuna
 Valikoituja avoimia linkkejä agentic engineeringiin, deliveryyn ja GenAI-käyttöönottoon. Ei salaista materiaalia. Synkattu vaultista {today}.
 
 {body}
-Lista täydentyy. Synkitys guestilla: `cd ~/Work/toni-hintikka && npm run sync-links && npm run deploy`.
 """
     SITE.parent.mkdir(parents=True, exist_ok=True)
     SITE.write_text(out, encoding="utf-8")

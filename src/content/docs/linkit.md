@@ -20,4 +20,3 @@ Valikoituja avoimia linkkejä agentic engineeringiin, deliveryyn ja GenAI-käytt
 
 - **Zalando PR Automation:** Implementation of automated approval gates. A significant percentage of low-risk PRs are auto-approved by LLM agents, heavily relying on strict audit trails and risk-based calibration. — [ZenML Case Study](https://www.zenml.io/llmops-database/enterprise-scale-agentic-engineering-building-llm-infrastructure-and-tooling-for-250-engineering-teams)
 
-Lista täydentyy. Synkitys guestilla: `cd ~/Work/toni-hintikka && npm run sync-links && npm run deploy`.
