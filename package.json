@@ -9,6 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "npm run build && wrangler deploy",
+    "sync-links": "python3 scripts/sync-public-links.py",
+    "sync-links:deploy": "npm run sync-links && npm run deploy",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {

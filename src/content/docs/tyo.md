@@ -23,3 +23,4 @@ Teknisesti liikun modernissa web- ja cloud-deliveryssä (React / TypeScript, API
 
 - GitHub: [tonihintikka](https://github.com/tonihintikka)
 - LinkedIn: [tonihintikka](https://www.linkedin.com/in/tonihintikka/)
+- Lukemisto: [Linkit](/linkit/) – avoimia artikkeleita luokiteltuna

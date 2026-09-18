@@ -39,6 +39,7 @@ export default defineConfig({
 						{ label: 'Etusivu', slug: 'index' },
 						{ label: 'Työ', slug: 'tyo' },
 						{ label: 'Lähestymistapa', slug: 'lahestymistapa' },
+						{ label: 'Linkit', slug: 'linkit' },
 						{ label: 'Yhteystiedot', slug: 'yhteystiedot' },
 					],
 				},
