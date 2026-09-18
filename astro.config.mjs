@@ -5,6 +5,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.tonihintikka.workers.dev',
+	prefetch: true,
 	integrations: [
 		starlight({
 			title: 'Toni Hintikka',
@@ -24,8 +25,11 @@ export default defineConfig({
 					href: 'https://github.com/tonihintikka',
 				},
 			],
+			components: {
+				Footer: './src/components/Footer.astro',
+			},
 			editLink: {
-				baseUrl: 'https://github.com/tonihintikka/toni-hintikka/edit/main/',
+				baseUrl: 'https://github.com/tonihintikka/toni-hintikka/edit/master/',
 			},
 			customCss: ['./src/styles/custom.css'],
 			sidebar: [

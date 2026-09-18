@@ -1,9 +1,9 @@
 /* Toni Hintikka — personal brand (Starlight)
-   Direction: ink forest + copper accent. Avoid purple gradients and cream/serif clichés. */
+   Direction: ink forest + copper accent (frontend-design).
+   Avoid purple gradients, cream/serif clichés, Inter/Roboto. */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
 
-/* Re-assert brand tokens after Starlight's layered defaults */
 @layer starlight.base {
 	:root,
 	::backdrop {
@@ -56,9 +56,47 @@
 	}
 }
 
-/* Splash without hero image: force one column (Starlight defaults to 7fr/4fr) */
+/* Atmosphere: grain + soft mesh (no flat fill) */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	opacity: 0.045;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.th-pointer-glow {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 28rem;
+	height: 28rem;
+	margin: -14rem 0 0 -14rem;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 0;
+	background: radial-gradient(
+		circle,
+		rgba(196, 122, 58, 0.16) 0%,
+		rgba(126, 184, 154, 0.06) 42%,
+		transparent 70%
+	);
+	filter: blur(2px);
+	will-change: transform;
+}
+
+.page,
+.main-frame,
 .hero {
 	position: relative;
+	z-index: 1;
+}
+
+/* Splash without hero image: force one column */
+.hero {
 	isolation: isolate;
 	padding-block: 3.5rem 2.5rem !important;
 	grid-template-columns: 1fr !important;
@@ -115,6 +153,12 @@ h1#_top,
 	line-height: 1.05;
 }
 
+/* anime.js splitText wraps chars — keep line intact */
+.hero h1 .char {
+	display: inline-block;
+	will-change: transform, opacity;
+}
+
 .sl-markdown-content h1,
 .sl-markdown-content h2 {
 	font-family: 'Source Serif 4', Georgia, serif;
@@ -127,14 +171,36 @@ h1#_top,
 	letter-spacing: -0.02em;
 }
 
+/* Native CSS scroll-timeline as progressive enhancement (no JS) */
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		html:not([data-th-fx='ready']) .sl-markdown-content > :is(h2, h3, p, ul, ol, table) {
+			animation: th-view-rise linear both;
+			animation-timeline: view();
+			animation-range: entry 0% cover 28%;
+		}
+	}
+}
+
+@keyframes th-view-rise {
+	from {
+		opacity: 0.35;
+		transform: translateY(0.75rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 @media (prefers-reduced-motion: no-preference) {
-	.hero h1 {
+	html:not([data-th-fx='ready']) .hero h1 {
 		animation: th-rise 0.7s ease-out both;
 	}
-	.hero .tagline {
+	html:not([data-th-fx='ready']) .hero .tagline {
 		animation: th-rise 0.7s ease-out 0.08s both;
 	}
-	.hero .actions {
+	html:not([data-th-fx='ready']) .hero .actions {
 		animation: th-rise 0.7s ease-out 0.16s both;
 	}
 }
@@ -154,8 +220,26 @@ h1#_top,
 	background: var(--th-copper, #c47a3a);
 	border-color: var(--th-copper, #c47a3a);
 	color: var(--th-ink, #0c1210);
+	will-change: transform;
+	transition: background 0.2s ease, box-shadow 0.25s ease;
+	box-shadow: 0 0 0 0 rgba(196, 122, 58, 0);
 }
 
 .sl-link-button.primary:hover {
 	background: var(--th-copper-bright, #e09a55);
+	box-shadow: 0 0 28px rgba(196, 122, 58, 0.35);
+}
+
+.sl-link-button.primary:focus-visible {
+	outline: 2px solid var(--th-mint, #7eb89a);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.th-pointer-glow {
+		display: none;
+	}
+	body::before {
+		opacity: 0.02;
+	}
 }
