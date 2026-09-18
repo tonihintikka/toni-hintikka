@@ -28,7 +28,9 @@ Output: `dist/`.
 npm run deploy
 ```
 
-This runs `astro build` then `wrangler deploy`. The Worker serves `./dist` as static assets.
+Live URL after subdomain `tonihintikka` is registered:
+
+**https://www.tonihintikka.workers.dev**
 
 Optional: connect the GitHub repo to **Workers Builds** in the Cloudflare dashboard for push-to-deploy (build command `npm run build`, deploy with Wrangler / Workers assets).
 

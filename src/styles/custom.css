@@ -3,36 +3,73 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
 
-:root {
-	--th-ink: #0c1210;
-	--th-ink-soft: #161f1b;
-	--th-fog: #d7e0d8;
-	--th-copper: #c47a3a;
-	--th-copper-bright: #e09a55;
-	--th-mint: #7eb89a;
+/* Re-assert brand tokens after Starlight's layered defaults */
+@layer starlight.base {
+	:root,
+	::backdrop {
+		--th-ink: #0c1210;
+		--th-ink-soft: #161f1b;
+		--th-fog: #d7e0d8;
+		--th-copper: #c47a3a;
+		--th-copper-bright: #e09a55;
+		--th-mint: #7eb89a;
 
-	--sl-color-accent-low: #2a3d34;
-	--sl-color-accent: var(--th-copper);
-	--sl-color-accent-high: var(--th-copper-bright);
-	--sl-color-white: #f4f7f4;
-	--sl-color-gray-1: #e6ede7;
-	--sl-color-gray-2: #c5d0c7;
-	--sl-color-gray-3: #8a9a8e;
-	--sl-color-gray-4: #4a5a50;
-	--sl-color-gray-5: #24302a;
-	--sl-color-gray-6: var(--th-ink-soft);
-	--sl-color-black: var(--th-ink);
+		--sl-color-accent-low: #2a3d34;
+		--sl-color-accent: #c47a3a;
+		--sl-color-accent-high: #e09a55;
+		--sl-color-white: #f4f7f4;
+		--sl-color-gray-1: #e6ede7;
+		--sl-color-gray-2: #c5d0c7;
+		--sl-color-gray-3: #8a9a8e;
+		--sl-color-gray-4: #4a5a50;
+		--sl-color-gray-5: #24302a;
+		--sl-color-gray-6: #161f1b;
+		--sl-color-black: #0c1210;
+		--sl-color-bg: #0c1210;
+		--sl-color-bg-nav: #161f1b;
+		--sl-color-bg-sidebar: #161f1b;
+		--sl-color-text: #c5d0c7;
+		--sl-color-text-accent: #e09a55;
+		--sl-font: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+		--sl-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+	}
 
-	--sl-font: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
-	--sl-font-system: var(--sl-font);
-	--sl-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+	:root[data-theme='light'],
+	[data-theme='light'] ::backdrop {
+		--sl-color-accent-low: #f3e6d8;
+		--sl-color-accent: #a8622a;
+		--sl-color-accent-high: #6b3a12;
+		--sl-color-white: #0c1210;
+		--sl-color-gray-1: #161f1b;
+		--sl-color-gray-2: #24302a;
+		--sl-color-gray-3: #4a5a50;
+		--sl-color-gray-4: #8a9a8e;
+		--sl-color-gray-5: #c5d0c7;
+		--sl-color-gray-6: #e6ede7;
+		--sl-color-gray-7: #f4f7f4;
+		--sl-color-black: #f7faf7;
+		--sl-color-bg: #f7faf7;
+		--sl-color-bg-nav: #eef3ef;
+		--sl-color-bg-sidebar: #f7faf7;
+		--sl-color-text: #24302a;
+		--sl-color-text-accent: #a8622a;
+	}
 }
 
-/* Brand-forward hero: name is the signal */
+/* Splash without hero image: force one column (Starlight defaults to 7fr/4fr) */
 .hero {
 	position: relative;
 	isolation: isolate;
-	padding-block: 3.5rem 2.5rem;
+	padding-block: 3.5rem 2.5rem !important;
+	grid-template-columns: 1fr !important;
+	gap: 1.5rem !important;
+}
+
+@media (width >= 50rem) {
+	.hero {
+		grid-template-columns: 1fr !important;
+		padding-block: clamp(2.5rem, 1rem + 8vmin, 7rem) !important;
+	}
 }
 
 .hero::before {
@@ -44,31 +81,31 @@
 	background:
 		radial-gradient(ellipse 80% 60% at 15% 20%, rgba(196, 122, 58, 0.22), transparent 55%),
 		radial-gradient(ellipse 70% 50% at 85% 10%, rgba(126, 184, 154, 0.14), transparent 50%),
-		linear-gradient(180deg, var(--th-ink) 0%, transparent 100%);
+		linear-gradient(180deg, var(--th-ink, #0c1210) 0%, transparent 100%);
 	pointer-events: none;
 }
 
 .hero > img,
 .hero .hero-html {
-	display: none;
+	display: none !important;
 }
 
 [data-has-hero] .page > .main-frame {
 	padding-top: 0;
 }
 
-.hero .sl-container {
+.hero .sl-container,
+.hero .stack {
 	max-width: 42rem;
 }
 
 .hero .tagline {
 	font-size: clamp(1.15rem, 2.2vw, 1.35rem);
 	line-height: 1.45;
-	color: var(--th-fog);
+	color: var(--th-fog, #d7e0d8);
 	max-width: 36rem;
 }
 
-/* Display title: brand, not a competing headline */
 h1#_top,
 .hero h1 {
 	font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
@@ -76,7 +113,6 @@ h1#_top,
 	font-size: clamp(2.75rem, 7vw, 4.25rem);
 	letter-spacing: -0.03em;
 	line-height: 1.05;
-	color: var(--sl-color-white);
 }
 
 .sl-markdown-content h1,
@@ -91,7 +127,6 @@ h1#_top,
 	letter-spacing: -0.02em;
 }
 
-/* Subtle motion */
 @media (prefers-reduced-motion: no-preference) {
 	.hero h1 {
 		animation: th-rise 0.7s ease-out both;
@@ -116,11 +151,11 @@ h1#_top,
 }
 
 .sl-link-button.primary {
-	background: var(--th-copper);
-	border-color: var(--th-copper);
-	color: var(--th-ink);
+	background: var(--th-copper, #c47a3a);
+	border-color: var(--th-copper, #c47a3a);
+	color: var(--th-ink, #0c1210);
 }
 
 .sl-link-button.primary:hover {
-	background: var(--th-copper-bright);
+	background: var(--th-copper-bright, #e09a55);
 }
