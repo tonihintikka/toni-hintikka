@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://toni-hintikka.workers.dev',
+	site: 'https://toni-hintikka.tonihintikka.workers.dev',
 	integrations: [
 		starlight({
 			title: 'Toni Hintikka',
