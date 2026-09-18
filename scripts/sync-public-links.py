@@ -35,9 +35,10 @@ HEADING_FI = {
 CONFIDENCE = re.compile(r"\s*\*?\(Confidence:[^)]+\)\*?\s*\.?", re.I)
 LAB_NOTE = re.compile(r"\s*Lab note:[^.]*\.", re.I)
 BACKTICK_PATH = re.compile(r"`[^`]*Ai_lab[^`]*`\.?")
-ITALIC_CONF = re.compile(r"\s*\*\(Confidence:[^*]*\*\)\.?", re.I)
+ITALIC_CONF = re.compile(r"\s*\*\([^*]*Confidence:[^*]*\*\)\.?", re.I)
 TRAILING_JUNK = re.compile(r"(\s*\*\*\s*)+$")
 MD_LEFTOVER = re.compile(r"\.md`\.?")
+SPACE_BEFORE_LINK = re.compile(r"(?<!\s)(\[)")
 
 
 def clean_item(text: str) -> str | None:
@@ -48,8 +49,10 @@ def clean_item(text: str) -> str | None:
     text = LAB_NOTE.sub("", text)
     text = BACKTICK_PATH.sub("", text)
     text = MD_LEFTOVER.sub("", text)
+    text = re.sub(r"\s*\*\s*$", "", text)
     text = re.sub(r"\s+", " ", text).strip()
     text = TRAILING_JUNK.sub("", text).strip().rstrip(" .")
+    text = SPACE_BEFORE_LINK.sub(r" \1", text)
     text = re.sub(r"^[\*\-]\s+", "- ", text)
     if not text.startswith("-"):
         text = "- " + text
@@ -105,10 +108,10 @@ def main() -> None:
                     seen_urls.add(u.rstrip(".,;"))
                 kept.append(item)
             if kept:
-                blocks.append(f"## {fi}\n\n" + "\n".join(kept) + "\n")
+                blocks.append(f"## {fi}\n\n" + "\n".join(kept))
 
     today = date.today().isoformat()
-    body = "".join(blocks) if blocks else "*Ei vielä julkisia linkkejä.*\n"
+    body = "\n\n".join(blocks) + "\n" if blocks else "*Ei vielä julkisia linkkejä.*\n"
     out = f"""---
 title: Linkit
 description: Julkinen lukemisto – avoimet artikkelit ja lähteet, luokiteltuna.
