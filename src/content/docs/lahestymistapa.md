@@ -32,3 +32,6 @@ Nimetty agenttikatalogi on yksi tapa. Se ei ole ainoa. Kiinteä persoona kannatt
 - Pidä päätökset avoimessa muodossa (Markdown-vault / Shared Brain), jotta seuraava sessio tai harness löytää ne.
 
 Nämä eivät ole dogmeja. Tiimit kehittävät parempia tapoja yhdessä – AI avaa työnkulkuja, joita ei aiemmin voinut tehdä käytännössä.
+
+Käytännössä tämä tarkoittaa samaa kuin hyvä delivery: ennustettava läpimeno, laatu ja tiimin autonomia – GenAI on työkalu siihen, ei erillinen teatteri.
+

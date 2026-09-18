@@ -7,7 +7,8 @@ description: Ota yhteyttä Toni Hintikkaan.
 
 Yhteystietoprofiili: [linkedin.com/in/tonihintikka](https://www.linkedin.com/in/tonihintikka/)
 
-Sieltä löytyvät tausta, roolit ja tapa ottaa yhteyttä.
+Sieltä löytyvät tausta, roolit ja tapa ottaa yhteyttä. Lyhyt tiivistelmä on myös tällä sivustolla sivulla [Työ](/tyo/).
+
 
 ## GitHub
 
