@@ -41,3 +41,7 @@ Optional: connect the GitHub repo to **Workers Builds** in the Cloudflare dashbo
 - Theme overrides in `src/styles/custom.css`
 
 Not a mirror of Ai Lab docs — original brand pages only.
+
+## For Omarchy agents
+
+Full publish recipe, subdomain API register, and Starlight gotchas live in the vault skill **`cloudflare-workers-site`** and wiki pages **cloudflare-workers-static-site** / **toni-hintikka-site**. Do not invent a parallel Pages workflow for this repo.
