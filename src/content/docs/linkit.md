@@ -14,10 +14,10 @@ Valikoituja avoimia linkkejä agentic engineeringiin, deliveryyn ja GenAI-käytt
 
 ## LLM-as-a-Judge ja evaluointi
 
-- **Retrieve, Annotate, Evaluate, Repeat (Zalando):** arXiv **2409.11860** is **September 2024**, not 2026. Multimodal LLMs as relevance judges for product retrieval — related reading, not a 2026 snapshot.- [arXiv: 2409.11860](https://arxiv.org/abs/2409.11860)
+- **Retrieve, Annotate, Evaluate, Repeat (Zalando):** arXiv **2409.11860** is **September 2024**, not 2026. Multimodal LLMs as relevance judges for product retrieval — related reading, not a 2026 snapshot. — [arXiv: 2409.11860](https://arxiv.org/abs/2409.11860)
 
 ## PR-review ja automaatio
 
-- **Zalando PR Automation:** Implementation of automated approval gates. A significant percentage of low-risk PRs are auto-approved by LLM agents, heavily relying on strict audit trails and risk-based calibration.- [ZenML Case Study](https://www.zenml.io/llmops-database/enterprise-scale-agentic-engineering-building-llm-infrastructure-and-tooling-for-250-engineering-teams)
+- **Zalando PR Automation:** Implementation of automated approval gates. A significant percentage of low-risk PRs are auto-approved by LLM agents, heavily relying on strict audit trails and risk-based calibration. — [ZenML Case Study](https://www.zenml.io/llmops-database/enterprise-scale-agentic-engineering-building-llm-infrastructure-and-tooling-for-250-engineering-teams)
 
 Lista täydentyy. Synkitys guestilla: `cd ~/Work/toni-hintikka && npm run sync-links && npm run deploy`.

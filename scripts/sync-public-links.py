@@ -53,6 +53,7 @@ def clean_item(text: str) -> str | None:
     text = re.sub(r"\s+", " ", text).strip()
     text = TRAILING_JUNK.sub("", text).strip().rstrip(" .")
     text = SPACE_BEFORE_LINK.sub(r" \1", text)
+    text = re.sub(r"\.-\s*\[", ". — [", text)
     text = re.sub(r"^[\*\-]\s+", "- ", text)
     if not text.startswith("-"):
         text = "- " + text
